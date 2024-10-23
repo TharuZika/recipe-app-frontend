@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -9,7 +10,17 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle authentication logic
-    navigate("/");
+    // navigate("/");
+    axios.post('http://localhost:5000/api/auth/login', {email, password})
+      .then(res => {
+        console.log(res);
+        if(res.data.flag){
+          navigate("/");
+        }else{
+          alert(res.data.msg);
+        }
+      })
+      .catch(error => console.error(error));
   };
 
   return (

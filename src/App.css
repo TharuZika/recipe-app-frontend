@@ -40,3 +40,16 @@
 .login-img{
   width: 100px;
 }
+
+.small-card {
+  width: 150px; /* Set a fixed width for the card */
+  height: 200px; /* Set a fixed height for the card */
+}
+
+.meal-title {
+  font-size: 0.9rem; /* Make the title text smaller */
+}
+
+.meal-category {
+  font-size: 0.8rem; /* Make the category text smaller */
+}

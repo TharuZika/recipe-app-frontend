@@ -35,9 +35,9 @@ function Register() {
   };
 
   return (
-    <div className="row justify-content-center">
-      <div className="col-md-6">
-        <div className="card shadow-lg border-0 login-form">
+    <div className="container d-flex justify-content-center">
+      <div className="col-md-6 container">
+        <div className="card container shadow-lg border-0 login-form">
           <div className="card-body px-5">
             <h3 className="card-title">Register</h3>
             <form onSubmit={handleSubmit}>

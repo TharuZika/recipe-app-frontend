@@ -23,6 +23,7 @@ function Navbar() {
       </ul>
       <span className="navbar-text">
         <Link to="/login"><img title='Logout' src={'https://cdn-icons-png.flaticon.com/128/1828/1828479.png'} width={30}/></Link>
+        <Link to="/login"><img title='Login' src={'https://cdn-icons-png.flaticon.com/128/1828/1828445.png'} width={30}/></Link>
       </span>
     </div>
   </div>

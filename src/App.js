@@ -9,9 +9,9 @@ import Register from './components/Register';
 function App() {
   return (
     <Router>
-      <div>
+      <div >
         <Navbar />
-        <div className="container mt-5">
+        <div>
           <Routes>
             <Route path="/" element={<RecipeCategories />} />
             <Route path="/login" element={<Login />} />

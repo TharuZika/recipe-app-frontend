@@ -1,33 +1,56 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Container, Button, Row, Col } from 'react-bootstrap';
+import MealCards from './MealCards';
 
 function RecipeCategories() {
   const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [meals, setMeals] = useState([]);
 
   useEffect(() => {
-    // Fetch categories from TheMealDB API
     axios.get('https://www.themealdb.com/api/json/v1/1/categories.php')
       .then(response => setCategories(response.data.categories))
-      .catch(error => console.error(error));
+      .catch(error => alert("Error fetching categories"));
   }, []);
 
+  useEffect(() => {
+    if (selectedCategory) {
+      axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${selectedCategory}`)
+        .then(response => setMeals(response.data.meals))
+        .catch(error => alert("Error fetching meals"));
+    }
+  }, [selectedCategory]);
+
+  const handleAddToFavorites = (meal) => {
+    alert(`${meal.strMeal} added to favorites!`);
+    // Implement actual "add to favorite" functionality here, e.g., save to localStorage or database
+  };
+
   return (
-    <div>
-      <h2>Recipe Categories</h2>
-      <div className="row">
+    <Container className="container mt-2">
+      {/* Category Buttons */}
+      <Row className="justify-content-center mb-4">
         {categories.map((category) => (
-          <div className="col-md-4 mb-4" key={category.idCategory}>
-            <div className="card">
-              <img src={category.strCategoryThumb} className="card-img-top" alt={category.strCategory} />
-              <div className="card-body">
-                <h5 className="card-title">{category.strCategory}</h5>
-                <p className="card-text">{category.strCategoryDescription.substring(0, 100)}...</p>
-              </div>
-            </div>
-          </div>
+          <Col key={category.idCategory} xs="auto" className="mb-3">
+            <Button
+              variant={category.strCategory === selectedCategory ? 'danger' : 'outline-danger'}
+              className="rounded-pill"
+              onClick={() => setSelectedCategory(category.strCategory)} // Set selected category
+            >
+              {category.strCategory}
+            </Button>
+          </Col>
         ))}
-      </div>
-    </div>
+      </Row>
+
+      {/* Displaying Meals in a Card Grid */}
+      <MealCards
+        meals={meals}
+        selectedCategory={selectedCategory}
+        handleAddToFavorites={handleAddToFavorites}
+      />
+    </Container>
   );
 }
 

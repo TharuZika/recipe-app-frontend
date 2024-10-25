@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import ReactJsAlert from 'reactjs-alert';
+import mainLogo from '../assets/images/main-logo.png';
 
 function Register() {
     const [email, setEmail] = useState('');
@@ -82,7 +83,7 @@ function Register() {
         <div className="card px-5 shadow-lg border-0">
           <div className="card-body px-5">
             <div className="text-center mb-4">
-              <h1 className="logo-text">Cooke</h1> {/* LOGO */}
+            <img alt="COOK" src={mainLogo} className="img-fluid" style={{ width: '150px' }} />
             </div>
             <h3 className="card-title text-center mb-4">Register</h3>
             <form onSubmit={handleSubmit}>
@@ -113,15 +114,15 @@ function Register() {
                 <input type="password" className={`form-control ${isinvalid}`} id="repassword" value={repass} onChange={(e) => checkPass(e.target.value)} />
                 <div className="text-danger">{invalidmsg}</div>
               </div>
-              <div className="row">
+              <div className="row my-2">
                 <div className='col-md-5'>
                 <button type="submit" className="btn btn-danger w-100 fw-semibold">Create Account</button>
                 </div>
+                <div className="text-center mt-1 col">
+                <p>Already have an account? <Link to="/login" className="text-primary">Login</Link></p>
+              </div>
               </div>
             </form>
-            <div className="text-center mt-3">
-              <p>Already have an account? <Link to="/login" className="text-primary">Login</Link></p>
-            </div>
           </div>
         </div>
       </div>

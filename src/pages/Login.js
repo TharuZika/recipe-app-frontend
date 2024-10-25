@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import ReactJsAlert from "reactjs-alert";
+import mainLogo from '../assets/images/main-logo.png';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -42,7 +43,7 @@ function Login() {
         <div className="card shadow-lg border-0">
           <div className="card-body px-5">
             <div className="text-center mb-4">
-              <h1 className="logo-text">Cooke</h1> {/* LOGO */}
+              <img alt="COOK" src={mainLogo} className="img-fluid" style={{ width: '150px' }} />
             </div>
             <h3 className="card-title text-center mb-4">Login</h3>
             <form onSubmit={handleSubmit}>

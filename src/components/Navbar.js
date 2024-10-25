@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import mainLogo from '../assets/images/main-logo.png';
 
 function Navbar() {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container">
-        <Link className="navbar-brand" to="/">Cook</Link>
+        <Link className="navbar-brand" to="/"><img alt="COOK" src={mainLogo} className="img-fluid" style={{ width: '100px' }} /></Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
